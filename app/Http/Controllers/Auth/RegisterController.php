@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'usuario' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'avatar' => ['string'],
+            //con el termino file se guarda la foto en la bd, pero se guarda la ruta y deberia ser el nombre.
+            'avatar' => ['file'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -74,7 +75,7 @@ class RegisterController extends Controller
             'surname' => $data['surname'],
             'usuario' => $data['usuario'],
             'email' => $data['email'],
-            //'avatar' => $data['avatar'],
+            'avatar' => $data['avatar'],
             'password' => Hash::make($data['password']),
         ]);
     }

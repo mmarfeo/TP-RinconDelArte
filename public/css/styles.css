@@ -428,3 +428,18 @@ ul.right-nav{
     f;
 
 }
+
+/* div ul .usuarioLogueado{
+    margin-left: unset;
+} */
+
+.label-form{
+    font-weight: bold;
+    color: #7F3F41;
+}
+
+.storage-avatar{
+    border-radius: 100%;
+    height: 60%;
+    
+}

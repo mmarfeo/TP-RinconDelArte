@@ -65,7 +65,7 @@
 
                                 <a class="dropdown-item" href="/index">Ir al inicio</a>
                                 
-                                <a class="dropdown-item" href="/EditarPerfil">Editar perfil</a>
+                                <a class="dropdown-item" href="/editarperfil">Editar perfil</a>
                                 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -14,7 +14,9 @@ class UserController extends Controller
         $users=User::find($id);
         $vac=compact('users');
         return view('perfil',$vac);
+        
     }
+    
 
     //function modificarDatos(Request $request){
     function editarDatos(Request $request){
@@ -67,10 +69,10 @@ class UserController extends Controller
     }
 
     //function tomarDatos($id){
-    function trarDatos($id){
+    function traerDatos($id){
         $users=User::find($id);
         $vac=compact('users');
-        return view('editarPerfil',$vac);
+        return view('editarperfil',$vac);
 
     }
 

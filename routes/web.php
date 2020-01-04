@@ -31,9 +31,25 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route:: get("/login", "LoginController@login");
 
+//RUTAS PERFIL
+Route::get('/perfil/{id}', 'UserController@verInfoUsuario')->middleware('auth');
+Route::get('/editarperfil/{id}', 'UserController@traerDatos')->middleware('auth');
+Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('auth');
+
+// Route::get('/editarperfil', function () {
+//     return view('editarperfil');
+// });
+
+//RUTAS DE ADMINISTRADORES
+Route::get ("/adminLista", function (){
+    return view ("adminLista");
+});
