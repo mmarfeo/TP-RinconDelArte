@@ -21,26 +21,32 @@
     <div class="contenedorPerfil col-lg-10 offset-lg-1 col-xs-12 row">
       
         <section class="col-12">
-          <span class="titPerfil">TU PERFIL</span>  
+        <br>
+          <center><h3> Mi Perfil</h3></center>  
           <br><br>
         </section>
 
-        <section class="col-lg-5 col-xs-12 row contenedorImagenPerfil">
-          <div class="col-12 contenedorImagenPerfil1">
-          <img src="/storage/{{$users->avatar}}" width="83%" alt="contactoFotoDefault">
+        <section class="col-lg-5 col-xs-12 offset-2 row contenedorImagenPerfil">
+          <div class="col-12 ">
+          <img class="storage-avatar" src="/storage/{{$users->avatar}}" width="83%" alt="contactoFotoDefault">
           </div>    
         </section>
-
-        <section class="col-lg-7 col-xs-12">
-          <h3>{{$users->name . " ".$users->surname}}</h3>
+        
+        
+        <section class="col-lg-5 col-xs-12">
+        <br><br>
+        <h5>Nombre y Apellido: {{$users->name . " ".$users->surname}}</h5>
           <br>
-          <p>Usuario: {{$users->usuario}}</p>
-          <p>E-MAIL: {{$users->email}}</p>
+          <h5>Usuario: {{$users->usuario}}</h5>
+          <br>
+          <h5>E-Mail: {{$users->email}}</h5>
      <!-- <p>PROVINCIA: {{$users->provincia}} </p> -->
           <br><br>
-        </section>
-        <div class="BOTONROJO botonPerfil">
+          <div class="btn btn boton " style="border:none">
           <a href="/editarperfil/{{$users->id}}">EDITAR DATOS</a>
         </div>
 
+        </section>
+      
+        
         

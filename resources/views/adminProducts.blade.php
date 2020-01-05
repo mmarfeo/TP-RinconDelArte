@@ -15,33 +15,22 @@
 <br>
 <br>
 <body>
-    <div>
-    @foreach($product as product)
-      {{$product->img }}
-
-      {{$product->name }}
+    
+@forelse($products as $product)
+      <h1>{{$product->img}}</h1>
       <br>
-      {{$product->description }}
+      <h1>{{$product->name}}</h1>
       <br>
-      {{$product->price }}
-    @endforeach
+      <h1>{{$product->description}}</h1>
+      <br>
+      <h1>{{$product->price}}</h1>
+      <br>
+    @empty
+    <p>
+    No hay productos
+    </p>
+    @endforelse
 
-      </div>
-
-
-
-
-
-
-
-
-
-           <div class="col-4 offset-4 boton">
-           {{-- <a href="{{route('admin')}}" class="link-boton">Cargar producto</a> --}}
-                <button type="submit"  name="button">Cargar producto</button>
-           </div>
-
-    </form>
  <br>
  <br>
 </body>

@@ -50,6 +50,4 @@ Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('aut
 // });
 
 //RUTAS DE ADMINISTRADORES
-Route::get ("/adminLista", function (){
-    return view ("adminLista");
-});
+Route::get ("/adminProducts", "ProductController@listado");
