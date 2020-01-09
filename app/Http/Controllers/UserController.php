@@ -40,7 +40,7 @@ class UserController extends Controller
         
         $user = Auth::user();
         $id = Auth::user()->id;
-        $nombreAvatar = '';
+        // $nombreAvatar = '';
 
         if($request->hasfile('avatar')){
 
@@ -52,16 +52,17 @@ class UserController extends Controller
             //cod1 $user->avatar = basename($nombreAvatar);
             $ruta = $request->file('avatar')->store('public');
             $nombreAvatar = basename($ruta);
+            // $user->avatar = $nombreAvatar;
             
         }
-
+       
         $user->avatar = $nombreAvatar;
         $user->name = $request["name"];
         $user->usuario = $request["usuario"];
         $user->surname = $request["surname"];
         $user->email =$request["email"];
         //$user->provincia=$request["provincia"];
-
+        
         $user->save();
 
         return redirect('perfil/'.$id);

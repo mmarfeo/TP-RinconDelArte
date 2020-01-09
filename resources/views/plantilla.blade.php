@@ -51,14 +51,72 @@
                     Lista de deseos
                 </a>
             </li> -->
-            <li class="col-1 offset-6"><a href="/login">Iniciar sesión</a></li>
-            <li class="col-1"><a href="/register">Crear cuenta</a></li>
-            <li class="col-1"><a href="/cart">Carrito</a>
+            @if( Auth::guest() )
+ 
+            <li class="col-1 offset-6">
+                <a href="/login">Iniciar sesión</a>
+            </li>
+            
+            <li class="col-1">
+                <a href="/register">Crear cuenta</a>
+            </li>
+            
+            <li class="col-1">
+                <a href="/cart">Carrito</a>
                 <a href="/cart" class="col-6">
-                  <i class="fas fa-shopping-cart"></i>
+                   <i class="fas fa-shopping-cart"></i>
                 </a>
             </li>
-        </ul>
+ 
+            @else
+            <li class="col-1 offset-6">
+                
+
+            @guest
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('') }}</a>
+            </li>
+            @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
+                </li>
+            @endif
+            @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <!-- hola xxxx -->Hola {{ Auth::user()->name }} <span class="caret"></span> 
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                <a class="dropdown-item" href="/index">Ir al inicio</a>
+                                
+                <a class="dropdown-item" href="/editarperfil/{{ Auth::user()->id }}">Editar perfil</a>
+                                
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar sesion') }}
+                    </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                             </form>
+                        </div>
+                    </li>
+                @endguest
+
+                
+            </li>
+            <li class="col-1">
+                <a href="/cart">Carrito</a>
+                <a href="/cart" class="col-6">
+                   <i class="fas fa-shopping-cart"></i>
+                </a>
+            </li>
+        <!-- </ul> -->
+        @endif
+ 
     </div>
 </div>
 

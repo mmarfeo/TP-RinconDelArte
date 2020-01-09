@@ -68,8 +68,36 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data){  
+        
+        $request = request();
+        
+        if($request->hasfile('avatar')){
+
+            $request->validate([
+                'avatar' => 'file',
+              ]);
+            //cod1= guarda ruta de archivo y no nombre. Linea 56,57 y 60 se agrego
+            //cod1  $nombreAvatar = $request->file('avatar')->store('public');
+            //cod1 $user->avatar = basename($nombreAvatar);
+            $ruta = $request->file('avatar')->store('public');
+            $nombreAvatar = basename($ruta);
+            // $user->avatar = $nombreAvatar;
+        
+    
+        
+            $user->avatar = $data[$nombreAvatar];
+            $user->name = $data["name"];
+            $user->usuario = $data["usuario"];
+            $user->surname = $data["surname"];
+            $user->email =$data["email"];
+            //$user->provincia=$data["provincia"];
+        
+    }
+    
+
+        else {
+            
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -77,6 +105,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'avatar' => $data['avatar'],
             'password' => Hash::make($data['password']),
+            // dd($data),
+   
         ]);
+       
     }
 }
+
+};

@@ -44,6 +44,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil/{id}', 'UserController@verInfoUsuario')->middleware('auth');
 Route::get('/editarperfil/{id}', 'UserController@traerDatos')->middleware('auth');
 Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('auth');
+// Route::get('/register', 'RegisterController@create')->middleware('auth');
 
 // Route::get('/editarperfil', function () {
 //     return view('editarperfil');
