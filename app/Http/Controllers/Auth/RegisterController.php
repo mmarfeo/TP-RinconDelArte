@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 use Auth;
 
 class RegisterController extends Controller
@@ -71,45 +72,21 @@ class RegisterController extends Controller
     protected function create(array $data){  
         
         $request = request();
-        
+
         if($request->hasfile('avatar')){
 
-            $request->validate([
-                'avatar' => 'file',
-              ]);
-            //cod1= guarda ruta de archivo y no nombre. Linea 56,57 y 60 se agrego
-            //cod1  $nombreAvatar = $request->file('avatar')->store('public');
-            //cod1 $user->avatar = basename($nombreAvatar);
             $ruta = $request->file('avatar')->store('public');
-            $nombreAvatar = basename($ruta);
-            // $user->avatar = $nombreAvatar;
-        
-    
-        
-            $user->avatar = $data[$nombreAvatar];
-            $user->name = $data["name"];
-            $user->usuario = $data["usuario"];
-            $user->surname = $data["surname"];
-            $user->email =$data["email"];
-            //$user->provincia=$data["provincia"];
-        
-    }
-    
 
-        else {
-            
-        return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'usuario' => $data['usuario'],
-            'email' => $data['email'],
-            'avatar' => $data['avatar'],
-            'password' => Hash::make($data['password']),
-            // dd($data),
-   
-        ]);
-       
+            $image_name = basename($ruta);
+            $datos_user['avatar'] = $image_name;
+        }
+
+        $datos_user['name'] = $data["name"];
+        $datos_user['usuario'] = $data["usuario"];
+        $datos_user['surname'] = $data["surname"];
+        $datos_user['email'] = $data["email"];
+        $datos_user['password'] = Hash::make($data['password']);
+
+        return User::create($datos_user);
     }
 }
-
-};
