@@ -27,9 +27,7 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+
 
 
 
@@ -44,7 +42,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil/{id}', 'UserController@verInfoUsuario')->middleware('auth');
 Route::get('/editarperfil/{id}', 'UserController@traerDatos')->middleware('auth');
 Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('auth');
-// Route::get('/register', 'RegisterController@create')->middleware('auth');
+Route::get('/borrarCuenta/{id}', 'UserController@CuentaDestroy')->middleware('auth');
 
 // Route::get('/editarperfil', function () {
 //     return view('editarperfil');
@@ -52,3 +50,17 @@ Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('aut
 
 //RUTAS DE ADMINISTRADORES
 Route::get ("/adminProducts", "ProductController@listado");
+Route::POST ("/adminProducts", "ProductController@listado");//Es para el boton de listado de productos en admin
+// Route::get ("/adminProducts/{id}", "ProductController@create");
+//Guardar nueva pelicula
+Route::post('/adminProducts','ProductController@store');
+// Route::post('/admin', function () {
+//     return view('admin');
+// });
+
+
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+// Route::get('/admin/', "ProductController@create");

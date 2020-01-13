@@ -40,7 +40,7 @@ class UserController extends Controller
         
         $user = Auth::user();
         $id = Auth::user()->id;
-        // $nombreAvatar = '';
+        $nombreAvatar = Auth::user()->avatar;
 
         if($request->hasfile('avatar')){
 
@@ -75,7 +75,7 @@ class UserController extends Controller
         return view('editarperfil',$vac);
     }
 
-    public function perfilDestroy(Request $req)
+    public function CuentaDestroy(Request $req)
     {
         $id=$req["id"];
         $user = User::find($id);

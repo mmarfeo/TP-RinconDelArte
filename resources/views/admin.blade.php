@@ -17,8 +17,9 @@
 <body>
     
 
-    <form method="post" action="/admin-lista" enctype="multipart/form-data" class="row col-12">
-        @csrf
+    <form method="post" action="/adminProducts" enctype="multipart/form-data" class="row col-12">
+          @csrf
+          
           <!-- Nombre -->
           <div class="input-container col-4 offset-4">
               <label for="name">Nombre de Producto</label>
@@ -27,8 +28,8 @@
         
            <!-- Descripcion -->
            <div class="input-container col-4 offset-4">
-               <label for="desc">Descripción</label>
-               <input type="text" name="desc" value="">
+               <label for="description">Descripción</label>
+               <input type="text" name="description" value="">
            </div>
          
            <!-- Precio  -->
@@ -46,9 +47,11 @@
     <br>
 
            <div class="col-4 offset-4 boton">
-           {{-- <a href="{{route('admin-lista')}}" class="link-boton">Cargar producto</a> --}}
+                <!-- <a href="{{--route('adminProducts')--}}" class="link-boton">Cargar producto</a> -->
                 <button type="submit"  name="button">Cargar producto</button>
-           </div>
+                <button onclick="/adminProducts"  name="button">Listado de productos</button>
+                <!-- <a href="/adminProducts">Listado de productos</a> -->
+            </div>
 
     </form>
  <br>

@@ -5,29 +5,123 @@
 @endsection
 
 <header>
-  <div class="primary-wrap row">
-    <!-- Header -->
-    <div class="user-nav-wrap col-12">
-    <ul class="left-nav col-3 row">
-            <li class="col-2 offset-1">
-                <a href="/index">
-                    <i class="fas fa-home"></i>
-                </a>
-            </li>
-  <!--        <li class="col-5">
-                <a href="#">
-                    <i class="far fa-envelope"></i>
-                    Contactanos
-                </a>
-            </li>    -->
-            <li class="col-5 offset-1">
-                <a href="/faq">
-                    <i class="far fa-question-circle"></i>
-                    Ayuda
-                </a>
-            </li>
-        </ul>
-    </div>
+<!-- Contenedor de Bootstrap -->
+<div class="container-fluid">
+
+<!-- Header -->
+<div class="user-nav-wrap">
+<div class="user-nav row">
+  <ul class="left-nav col-3 row">
+      <li class="col-2 offset-1">
+          <a href="/index">
+              <i class="fas fa-home"></i>
+          </a>
+      </li>
+<!--        <li class="col-5">
+          <a href="#">
+              <i class="far fa-envelope"></i>
+              Contactanos
+          </a>
+      </li>    -->
+      <li class="col-5 offset-1">
+          <a href="/faq">
+              <i class="far fa-question-circle"></i>
+              Ayuda
+          </a>
+      </li>
+  </ul>
+<!--      <div class="middle-nav col-2 row">
+      <div class="col-12 envio-gratis">
+          <a href="#">
+              <i class="fas fa-rocket"></i>
+              Envío gratis
+          </a>
+      </div>
+  </div>
+  <ul class="right-nav col-7 row">
+      <li class="col-3 bienvenida">
+                      </li>
+      <li class="col-2">
+          <a href="#">
+              <i class="far fa-compass"></i>
+              Mis pedidos
+          </a>
+      </li>
+      <li class="col-3">
+          <a href="#">
+              <i class="far fa-heart"></i>
+              Lista de deseos
+          </a>
+      </li> -->
+      @if( Auth::guest() )
+
+      <li class="col-1 offset-6">
+          <a href="/login">Iniciar sesión</a>
+      </li>
+      
+      <li class="col-1">
+          <a href="/register">Crear cuenta</a>
+      </li>
+      
+      <li class="col-1">
+          <a href="/cart">Carrito</a>
+          <a href="/cart" class="col-6">
+             <i class="fas fa-shopping-cart"></i>
+          </a>
+      </li>
+
+      @else
+      <li class="col-1 offset-6">
+          
+
+      @guest
+      <li class="nav-item">
+          <a class="nav-link" href="{{ route('login') }}">{{ __('') }}</a>
+      </li>
+      @if (Route::has('register'))
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
+          </li>
+      @endif
+      @else
+
+          
+      <li class="nav-item dropdown">
+          <img class="mini-avatar" src="/storage/{{Auth::user()->avatar}}" align="left"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+          <!-- hola xxxx -->Hola {{ Auth::user()->name }} <span class="caret"></span> 
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item" href="/index">Ir al inicio</a>
+                          
+          <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a>
+                          
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                  {{ __('Cerrar sesion') }}
+              </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                       </form>
+                  </div>
+              </li>
+          @endguest
+         
+      </li>
+      <li class="col-1">
+          <a href="/cart">Carrito</a>
+          <a href="/cart" class="col-6">
+             <i class="fas fa-shopping-cart"></i>
+          </a>
+      </li>
+  <!-- </ul> -->
+  @endif
+
+</div>
+</div>
       
     <!-- Galería de Arte -->
     <div class="brand-wrap col-2 offset-5">
@@ -84,8 +178,11 @@
             <br>
 
             <label class="col-lg-4 col-xs-8 label-form"  for="email">Email:</label>
-            <input class="col-xs-8"id="email" type="email" name="email" value="{{$users->email}}">
-            <span class="error"> {{$errors->first("email")}} </span>
+         
+                <input class="col-xs-8"id="email" type="email" name="email" value="{{$users->email}}">
+           
+                <span class="error"> {{$errors->first("email")}} </span>
+            
             <br>
         
             <label class="col-lg-4 col-xs-8 label-form"  for="provincias">Provincia:</label>

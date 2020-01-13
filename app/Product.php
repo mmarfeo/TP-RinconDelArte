@@ -10,4 +10,8 @@ class Product extends Model
       public $primaryKey = "id";
 //    public $timestamps = false;
       public $guarded = [];
+
+      // protected $fillable = [
+      //       'name', 'description', 'price', 'img', 'products_active1', 
+      //   ];
 }

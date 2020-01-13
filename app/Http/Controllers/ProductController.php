@@ -15,14 +15,13 @@ class ProductController extends Controller
         return view("adminProducts", compact ("products"));
     }
 
-    public function create (Request $formulario){
-
+    public function store (Request $formProd){
+       
         $reglas=[
           'name'=>"string|required|min:3|unique:products,name",
-          'brand_id'=>"string|required|min:5",
           'description'=>"string|required|min:5",
           'price'=>"numeric|required|min:0",
-          'imgProd'=>"image|required",
+          'imgProduct'=>"image|required",
         ];
   
         $mensajes=[
@@ -33,20 +32,20 @@ class ProductController extends Controller
           'numeric'=>"Sólo puede ingresar números",
           'image'=>"Sólo puede subir archivos .jpg o .png",
         ];
-        $this->validate($formulario, $reglas,$mensajes);
+        $this->validate($formProd, $reglas,$mensajes);
   
-        $path = $formulario -> file("imgProd") -> store("public");
-        $nombreArchivo=basename($path);
+        $rutaImgProduct = $formProd -> file("imgProduct") -> store("public");
+        $nombreimgProduct=basename($rutaImgProduct);
   
         $NewProduct = new Product();
-        $NewProduct->img = $nombreArchivo;
-        $NewProduct->name = $formulario["name"];
-        $NewProduct->description = $formulario["description"];
-        $NewProduct->price = $formulario["price"];
-        $NewProduct->brand_id = $formulario["brand_id"];
+        $NewProduct->imgProduct = $nombreimgProduct;
+        $NewProduct->name = $formProd["name"];
+        $NewProduct->description = $formProd["description"];
+        $NewProduct->price = $formProd["price"];
+       
         $NewProduct->save();
   
-        return redirect("admin");
+        return redirect("adminProducts");
       }
     
 }

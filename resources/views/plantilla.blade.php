@@ -82,8 +82,10 @@
                 </li>
             @endif
             @else
+
+                
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <img class="mini-avatar" src="/storage/{{Auth::user()->avatar}}" align="left"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 <!-- hola xxxx -->Hola {{ Auth::user()->name }} <span class="caret"></span> 
                 </a>
 
@@ -91,7 +93,9 @@
 
                 <a class="dropdown-item" href="/index">Ir al inicio</a>
                                 
-                <a class="dropdown-item" href="/editarperfil/{{ Auth::user()->id }}">Editar perfil</a>
+                <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a>
+
+                <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a>
                                 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -105,8 +109,7 @@
                         </div>
                     </li>
                 @endguest
-
-                
+               
             </li>
             <li class="col-1">
                 <a href="/cart">Carrito</a>
