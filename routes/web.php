@@ -50,17 +50,16 @@ Route::get('/borrarCuenta/{id}', 'UserController@CuentaDestroy')->middleware('au
 
 //RUTAS DE ADMINISTRADORES
 Route::get ("/adminProducts", "ProductController@listado");
-Route::POST ("/adminProducts", "ProductController@listado");//Es para el boton de listado de productos en admin
-// Route::get ("/adminProducts/{id}", "ProductController@create");
-//Guardar nueva pelicula
-Route::post('/adminProducts','ProductController@store');
-// Route::post('/admin', function () {
-//     return view('admin');
-// });
-
+Route::get ("/adminProducts", "ProductController@listado");//Es para el boton de listado de productos en admin
+Route::post ("/adminProducts", "ProductController@store");
+Route::get('/editarProducts/{id}', 'ProductController@verProduct');
+Route::post('/editarProducts/{id}', 'ProductController@editarProd');
+Route::get('/borrarProducts/{id}', 'ProductController@ProductDestroy');
 
 Route::get('/admin', function () {
     return view('admin');
 });
 
 // Route::get('/admin/', "ProductController@create");
+
+

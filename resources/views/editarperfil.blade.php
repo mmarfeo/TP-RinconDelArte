@@ -17,12 +17,6 @@
               <i class="fas fa-home"></i>
           </a>
       </li>
-<!--        <li class="col-5">
-          <a href="#">
-              <i class="far fa-envelope"></i>
-              Contactanos
-          </a>
-      </li>    -->
       <li class="col-5 offset-1">
           <a href="/faq">
               <i class="far fa-question-circle"></i>
@@ -30,29 +24,6 @@
           </a>
       </li>
   </ul>
-<!--      <div class="middle-nav col-2 row">
-      <div class="col-12 envio-gratis">
-          <a href="#">
-              <i class="fas fa-rocket"></i>
-              Envío gratis
-          </a>
-      </div>
-  </div>
-  <ul class="right-nav col-7 row">
-      <li class="col-3 bienvenida">
-                      </li>
-      <li class="col-2">
-          <a href="#">
-              <i class="far fa-compass"></i>
-              Mis pedidos
-          </a>
-      </li>
-      <li class="col-3">
-          <a href="#">
-              <i class="far fa-heart"></i>
-              Lista de deseos
-          </a>
-      </li> -->
       @if( Auth::guest() )
 
       <li class="col-1 offset-6">
