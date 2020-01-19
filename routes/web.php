@@ -19,9 +19,12 @@ Route::get('/', function () {
     return view('plantilla');
 });
 
-Route::get('/index', function () {
-    return view('plantilla');
-});
+Route::get ("/index", "IndexController@listado");
+
+//ver inicio
+// Route::get('/index', function () {
+//     return view('plantilla');
+// });
 
 Route::get('/faq', function () {
     return view('faq');
@@ -44,10 +47,6 @@ Route::get('/editarperfil/{id}', 'UserController@traerDatos')->middleware('auth'
 Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('auth');
 Route::get('/borrarCuenta/{id}', 'UserController@CuentaDestroy')->middleware('auth');
 
-// Route::get('/editarperfil', function () {
-//     return view('editarperfil');
-// });
-
 //RUTAS DE ADMINISTRADORES
 Route::get ("/adminProducts", "ProductController@listado");
 Route::get ("/adminProducts", "ProductController@listado");//Es para el boton de listado de productos en admin
@@ -57,9 +56,11 @@ Route::post('/editarProducts/{id}', 'ProductController@editarProd');
 Route::get('/borrarProducts/{id}', 'ProductController@ProductDestroy');
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin'); //formulario de carga de productos
 });
 
-// Route::get('/admin/', "ProductController@create");
+//RUTAS DE CARRITO
+Route::get ("/cart", "CartController@listado");
+
 
 
