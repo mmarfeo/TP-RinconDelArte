@@ -25,6 +25,7 @@ body {
 
 html, body {
     overflow-x: hidden !important;
+    overflow-y: auto !important;
 }
 
 
@@ -391,6 +392,7 @@ input {
     background: #FFFFFF;
     margin: 10px 0 0 0;
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.29);
+   
 }
 
 .enviar-form {
@@ -487,4 +489,11 @@ ul.right-nav{
 .storage-edit-product{
     height: 30%;
     width: 50%;   
+}
+
+.index-product{
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+   
 }
