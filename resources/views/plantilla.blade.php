@@ -61,12 +61,21 @@
                 <a href="/register">Crear cuenta</a>
             </li>
             
-            <li class="col-1">
-                <a href="/cart">Carrito</a>
-                <a href="/cart" class="col-6">
-                   <i class="fas fa-shopping-cart"></i>
-                </a>
-            </li>
+                @guest
+                    <li class="col-1">
+                        <a href="{{ route('login') }}">Carrito</a>
+                        <a href="{{ route('login') }}" class="col-6">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                @else
+                @endguest
+                    <!-- <li class="col-1">
+                    <a href="/cart">Carrito</a>
+                    <a href="/cart" class="col-6">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                     </li> -->
  
             @else
             <li class="col-1 offset-6">
@@ -91,32 +100,38 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                <a class="dropdown-item" href="/index">Ir al inicio</a>
+                <strong><a class="dropdown-item" href="/index">Ir al inicio</a></strong>
                                 
-                <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a>
+                <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></strong>
 
-                <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a>
+                <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a></strong>
                                 
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                <strong><a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                         {{ __('Cerrar sesion') }}
-                    </a>
+                    </a></strong>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                              </form>
                         </div>
                     </li>
+                    <li class="col-1">
+                        <a href="/cart">Carrito</a>
+                        <a href="/cart" class="col-6">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                 @endguest
                
             </li>
-            <li class="col-1">
+            <!-- <li class="col-1">
                 <a href="/cart">Carrito</a>
                 <a href="/cart" class="col-6">
                    <i class="fas fa-shopping-cart"></i>
                 </a>
-            </li>
+            </li> -->
         <!-- </ul> -->
         @endif
  
@@ -136,99 +151,12 @@
                     </a>
 				         </h1>
 			</div>
-<!--
-			<div class="search-wrap col-10 row">
-				<form method="get" action="#" class="col-10">
-					<div class="header-search-wrap row">
-                        <input type="text" placeholder="Buscar obras por título o autor" name="searchTerm" value="" class="col-9 offset-1 searchTerm">
-						<button type="submit" class="col-2 searchButton">
-                            <span>
-                            <i class="fas fa-search"></i>
-                            </span>
-                        </button>
-					</div>
-				</form>
-				<a href="#" class="col-2 busqueda-avanzada">
-                    Búsqueda avanzada
-                </a>
-            </div>
-
-		</div>     -->
 	</header>
 </div>
 
-<!--
-<div class="secondary-header-wrap">
-	<div class="secondary-header row">
-        <ul class="col-7 row">
-            <li class="col-3">  -->
-                <!-- Desplegable -->
-<!--                <a href="#">
-                    Comprar por categoría
-                </a>
-            </li>
-            <li class="col-2">
-                <a href="#">
-                    Populares
-                </a>
-            </li>
-            <li class="col-2">
-                <a href="#">
-                    Próximamente
-                </a>
-            </li>
-            <li class="col-3">
-                <a href="#">
-                    Nuevos lanzamientos
-                    </a>
-            </li>
-            <li class="col-2">
-                <a href="#">
-                    Ofertas
-                </a>
-            </li>
-        </ul>
-        <div class="right-section col-3 offset-2 row">
-            <div class="language-selector-wrap col-3">
-                <form method="post" action="">
-                    <div class="language-selector">
-                        <select name="selectLanguage" id="selectLanguage">
-                            <option value="en_US">
-                                English
-                            </option>
-                            <option value="es_ES" selected="selected">
-                                Español
-                            </option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="currency-selector-wrap col-3">
-                <form method="post" action="">
-	                <div class="currency-selector">
-		                <select name="selectCurrency" id="selectCurrency">
-                            <option value="ARS" selected="selected">
-                                $&nbsp;ARS
-                            </option>
-                            <option value="USD">
-                                $&nbsp;USD
-                            </option>
-			            </select>
-	                </div>
-                </form>
-            </div>     -->
-<!--              <div class="basket-wrap col-6 row">
-                <a href="#" class="col-6">
-                    <span>137</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <span class="col-5 precio-total">$15.234,56</span>
-            </div>
-        </div>
-	</div>
-</div>    -->
+
       @yield ("principal")
-      <!-- @yield ("app") -->
+      @yield ("app")
       @yield ("registro")
       @yield ("faq")
 

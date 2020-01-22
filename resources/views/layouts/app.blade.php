@@ -20,11 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<!-- @extends ("plantilla")
+@extends ("plantilla")
 @section('titulo')
       Iniciar sesion
 @endsection
-@section("app")   -->
+@section("app")
 
 <body>
     <div id="app">
@@ -80,8 +80,8 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
-                        @endguest -->
+                            </li>-->
+                        <!-- @endguest -->
                     </ul>
                 </div>
             </div>

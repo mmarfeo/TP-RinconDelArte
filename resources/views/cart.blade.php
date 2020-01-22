@@ -33,7 +33,7 @@
                <span><strong><center>Código</center></strong></span>
             </li>
             <li class="col-2" style="border: 1px solid black; background: white">
-               <span><strong><center>Nombre de Cuadro</center></strong></span>
+               <span><strong><center>Nombre</center></strong></span>
             </li>
             <li class="col-3"style="border: 1px solid black; background: white">
                <span><strong><center>Descripción</center></strong></span>

@@ -15,11 +15,13 @@
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('plantilla');
-});
+// Route::get('/', function () {
+//     return view('plantilla');
+// });
 
+Route::get ("/", "IndexController@listado");
 Route::get ("/index", "IndexController@listado");
+Route::get ("/home", "IndexController@listado");
 
 //ver inicio
 // Route::get('/index', function () {
@@ -29,17 +31,13 @@ Route::get ("/index", "IndexController@listado");
 Route::get('/faq', function () {
     return view('faq');
 });
-
-
-
-
-
-
+// Route:: get("/login", "HomeController@login");
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::post('/home/{id}', 'HomeController@login')->name('home');
 
-//Route:: get("/login", "LoginController@login");
+
 
 //RUTAS PERFIL
 Route::get('/perfil/{id}', 'UserController@verInfoUsuario')->middleware('auth');
@@ -60,7 +58,14 @@ Route::get('/admin', function () {
 });
 
 //RUTAS DE CARRITO
-Route::get ("/cart", "CartController@listado");
 
+//Es muy importante el orden de las rutas, ya que puede entrar primero a una y luego a otra
+//En este caso le ponemos view porque queremos que sea una vista, y ese es el segundo parametro
+// el nombre de la vista "cart", el primero es la ruta "/cart", el middleware("auth"), es para
+// que solo ingresen quienes estan logueados.
+// Route::view("/cart", "cart")->name ("cart")->middleware("auth");
+
+Route::get ("/cart", "CartController@listado");
+Route::POST ("/cart", "CartController@listado");
 
 

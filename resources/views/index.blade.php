@@ -77,13 +77,13 @@
                 <a href="{{ route('login') }}" class="btn btn boton col-7 offset-3">Agregar al carrito</a>
                 @else
                   <!-- El ['productId' => $product->id] es un parametro requerido que le pedi a la route del addProduct -->
-                  <form action="{{ route('addProductToCart', ['productId' => $product->id]) }}" method="post">
+                  <form action="/cart" method="get">
     
-                    <div class="col-8 offset-2 boton">
+                    <!-- <div class="col-8 offset-1 boton"> -->
                       <input type="hidden" name="product_id" value="{{$product->id}}">
-                      <button type="submit" class="btn btn-danger">Agregar al carrito</button>
-                    </div>
-                    <br />
+                      <button type="submit" class="btn btn boton col-7 offset-3">Agregar al carrito</button>
+                    <!-- </div> -->
+                    <br>
 
                   </form>
               @endguest

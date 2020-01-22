@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -25,4 +27,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    // public function login()
+    // {
+    //     return view('/index');
+    // }
 }
