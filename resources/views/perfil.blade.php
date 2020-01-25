@@ -64,8 +64,8 @@
       </li>
       
       <li class="col-1">
-          <a href="/cart">Carrito</a>
-          <a href="/cart" class="col-6">
+          <a href="/carrito">Carrito</a>
+          <a href="/carrito" class="col-6">
              <i class="fas fa-shopping-cart"></i>
           </a>
       </li>
@@ -112,8 +112,8 @@
          
       </li>
       <li class="col-1">
-          <a href="/cart">Carrito</a>
-          <a href="/cart" class="col-6">
+          <a href="/carrito">Carrito</a>
+          <a href="/carrito" class="col-6">
              <i class="fas fa-shopping-cart"></i>
           </a>
       </li>

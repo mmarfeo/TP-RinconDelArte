@@ -46,12 +46,13 @@ Route::post('/editarperfil/{id}', 'UserController@editarDatos')->middleware('aut
 Route::get('/borrarCuenta/{id}', 'UserController@CuentaDestroy')->middleware('auth');
 
 //RUTAS DE ADMINISTRADORES
-Route::get ("/adminProducts", "ProductController@listado");
+
 Route::get ("/adminProducts", "ProductController@listado");//Es para el boton de listado de productos en admin
 Route::post ("/adminProducts", "ProductController@store");
 Route::get('/editarProducts/{id}', 'ProductController@verProduct');
 Route::post('/editarProducts/{id}', 'ProductController@editarProd');
 Route::get('/borrarProducts/{id}', 'ProductController@ProductDestroy');
+Route::get('/verProduct/{id}', 'CartController@verProduct');
 
 Route::get('/admin', function () {
     return view('admin'); //formulario de carga de productos
@@ -63,9 +64,12 @@ Route::get('/admin', function () {
 //En este caso le ponemos view porque queremos que sea una vista, y ese es el segundo parametro
 // el nombre de la vista "cart", el primero es la ruta "/cart", el middleware("auth"), es para
 // que solo ingresen quienes estan logueados.
-// Route::view("/cart", "cart")->name ("cart")->middleware("auth");
-
-Route::get ("/cart", "CartController@listado");
-Route::POST ("/cart", "CartController@listado");
+Route::view("/carrito", "cart")->name ("cart")->middleware("auth");
 
 
+// Route::get ("/cart", "CartController@listado")->name('cart')->middleware('auth');;
+
+Route::post('/carrito/{productId}', 'CartController@addProduct')->name('addProductToCart');
+Route::delete("/carrito/{productId}","CartController@deleteProduct")->name('deleteProductFromCart');
+// Route::POST ("/cart", "CartController@listado");
+// Route::get('/cart', 'CartController@listado')->name('cart')->middleware('auth');

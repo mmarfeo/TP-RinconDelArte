@@ -1,19 +1,11 @@
 @include("head")
-<header>
-  <div class="primary-wrap row">
-    <!-- Galería de Arte -->
-    <div class="brand-wrap col-2 offset-5">
-              <h1>
-                  <a href="/index">
-                    <img src="/img/logo.png" alt="Galería de Arte" class="logo">
-                  </a>
-               </h1>
-    </div>
-  </div>
-</header>
+@extends ("plantilla")
 
-<br>
-<br>
+@section("title")
+   Mi carrito de compras
+@endsection
+
+@section("carrito")
 <body>
 
 <div class="row">
@@ -24,13 +16,18 @@
           <center><h3>Mi Carrito</h3></center>  
           <br><br>
         </section>
+       
+  <!-- Esto esta aca porque previeamente se puso en el modelo del usuario tienen muchos (hasMany) del modelo ("App\ProductInCart")  -->
+  @if (Auth::user()->productsInCart->isNotEmpty())
+
 <section class="col-lg-12 col-xs-12  contenedorImagenPerfil">
 
   <div class="container-fluid">
+  
       <div class="row ">
         <ul class="col-11 offset-1">
             <li class="col-1" style="border: 1px solid black; background: white">
-               <span><strong><center>Código</center></strong></span>
+               <span><strong><center>Cantidad</center></strong></span>
             </li>
             <li class="col-2" style="border: 1px solid black; background: white">
                <span><strong><center>Nombre</center></strong></span>
@@ -53,41 +50,46 @@
         </ul>
      </div>
 
-@forelse($products as $product)
+     @foreach(Auth::user()->productsInCart as $productInCart)
 
     <div class="row" style="height:8%; margin-bottom: 1%">
         <ul class="col-11 offset-1">
             <li class="col-1 li-product" >
-               <span><strong><center>{{$product->id}}</center></strong></span>
+               <span><strong><center>{{ $productInCart->count }}</center></strong></span>
             </li>
             <li class="col-2 li-product">
-               <span><strong><center>{{$product->name}}</center></strong></span>
+               <span><strong><center>{{ $productInCart->product->name }}</center></strong></span>
             </li>
             <li class="col-3 li-product">
-               <span><strong><center>{{$product->description}}</center></strong></span>
+               <span><strong><center>{{ $productInCart->product->description }}</center></strong></span>
             </li>
             <li class="col-1 li-product">
-               <span><strong><center>${{$product->price}}</center></strong></span>
+               <span><strong><center>${{ $productInCart->product->price }}</center></strong></span>
             </li>
             <li class="col-2 li-product">
-               <span><center><img class="storage-product" src="/storage/IMGproduct/{{$product->img}}" alt=""></center></span>
+               <!-- el alt es el nombre de la imagen -->
+               <span><center><img class="storage-product" src="/storage/IMGproduct/{{$productInCart->product->img}}" alt="/storage/IMGproduct/{{$productInCart->product->name}}"></center></span>
             </li>
-            <!-- <li class="col-1 li-product">
-               <span><strong><center><a href="/editarProducts/{{$product->id}}">Editar</a></center></strong></span>
-            </li> -->
-            <li class="col-1 li-product">
-               <span><strong><center><a href="/borrarProducts/{{$product->id}}">Borrar</a></center></strong></span>
-            </li>
+            <li class="col-1 offset-0 li-product">
+            <center>
+            <form action="{{ route('deleteProductFromCart', ['productId' => $productInCart->product->id]) }}" method="post">
+               @csrf           
+               <input type="hidden" name="_method" value="DELETE" >
+               <button type="submit" class="btn-carrito">Eliminar</button>            
+            </form>
+            </center>
+         </li>
         </ul>
+
      </div>
- 
-    @empty
+     @endforeach
+     @else
     <ul class="li-product">
-      <li class="col-1 li-product">
+      <li class="col-12 offset-2 li-product">
           <span><strong><center>No hay productos</center></strong></span>
        </li>
      </ul>
-    @endforelse
+     @endif
 </div>
   <br>
  <br>
@@ -96,13 +98,4 @@
   </section>
 
 </body>
-
-<footer class="row">
- <br>
- <br>
- <br>
- <br>
-
-</footer>
-
-
+@endsection

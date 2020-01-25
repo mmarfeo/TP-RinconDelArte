@@ -118,8 +118,8 @@
                         </div>
                     </li>
                     <li class="col-1">
-                        <a href="/cart">Carrito</a>
-                        <a href="/cart" class="col-6">
+                        <a href="/carrito">Carrito</a>
+                        <a href="/carrito" class="col-6">
                             <i class="fas fa-shopping-cart"></i>
                         </a>
                     </li>
@@ -159,9 +159,8 @@
       @yield ("app")
       @yield ("registro")
       @yield ("faq")
-
-      
-      @yield ("cart")
+      @yield ("Cuadros")
+      @yield ("carrito")
  
 <!-- Footer -->
 <footer class="row">
