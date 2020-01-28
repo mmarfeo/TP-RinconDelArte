@@ -65,7 +65,7 @@ Route::get('/admin', function () {
 // el nombre de la vista "cart", el primero es la ruta "/cart", el middleware("auth"), es para
 // que solo ingresen quienes estan logueados.
 Route::view("/carrito", "cart")->name ("cart")->middleware("auth");
-
+Route::view("/orders","orders")->name("orders");
 
 // Route::get ("/cart", "CartController@listado")->name('cart')->middleware('auth');;
 
@@ -73,3 +73,5 @@ Route::post('/carrito/{productId}', 'CartController@addProduct')->name('addProdu
 Route::delete("/carrito/{productId}","CartController@deleteProduct")->name('deleteProductFromCart');
 // Route::POST ("/cart", "CartController@listado");
 // Route::get('/cart', 'CartController@listado')->name('cart')->middleware('auth');
+
+Route::post('/orders', "OrdersController@createOrder")->name("createOrder");

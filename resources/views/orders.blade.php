@@ -1,13 +1,10 @@
 @include("head")
 
-
 @section("title")
-   Mi carrito de compras
+   Mis órdenes
 @endsection
 
 <body>
-
-
   <!-- Contenedor de Bootstrap -->
   <div class="container-fluid">
 
@@ -165,17 +162,17 @@
       
         <section class="col-12">
         <br>
-          <center><h3>Mi Carrito</h3></center>  
+          <center><h3>Mis órdenes</h3></center>  
           <br><br>
         </section>
        
   <!-- Esto esta aca porque previeamente se puso en el modelo del usuario tienen muchos (hasMany) del modelo ("App\ProductInCart")  -->
-  @if (Auth::user()->productsInCart->isNotEmpty())
+  @if (Auth::user()->orders->isNotEmpty())
 
 <section class="col-lg-12 col-xs-12  contenedorImagenPerfil">
 
   <div class="container-fluid">
-  
+  @foreach(Auth::user()->orders as $order)
       <div class="row ">
         <ul class="col-11 offset-1">
             <li class="col-1" style="border: 1px solid black; background: white">
@@ -196,79 +193,52 @@
             <!-- <li class="col-1"style="border: 1px solid black; background: white">
                <span><strong><center>Editar</center></strong></span>
             </li> -->
-            <li class="col-1"style="border: 1px solid black; background: white">
+            <!-- <li class="col-1"style="border: 1px solid black; background: white">
                <span><strong><center>Borrar</center></strong></span>
-            </li>
+            </li> -->
         </ul>
      </div>
 
-     @foreach(Auth::user()->productsInCart as $productInCart)
+     @foreach($order->ordersProduct as $orderProduct)
 
     <div class="row" style="height:8%; margin-bottom: 1%">
         <ul class="col-11 offset-1">
             <li class="col-1 li-product" >
-               <span><strong><center>{{ $productInCart->count }}</center></strong></span>
+               <span><strong><center>{{ $orderProduct->count }}</center></strong></span>
             </li>
             <li class="col-2 li-product">
-               <span><strong><center>{{ $productInCart->product->name }}</center></strong></span>
+               <span><strong><center>{{ $orderProduct->product->name }}</center></strong></span>
             </li>
             <li class="col-3 li-product">
-               <span><strong><center>{{ $productInCart->product->description }}</center></strong></span>
+               <span><strong><center>{{ $orderProduct->product->description }}</center></strong></span>
             </li>
             <li class="col-1 li-product">
-               <span><strong><center>${{ $productInCart->product->price }}</center></strong></span>
+               <span><strong><center>${{ $orderProduct->product->price }}</center></strong></span>
             </li>
             <li class="col-2 li-product">
                <!-- el alt es el nombre de la imagen -->
-               <span><center><img class="storage-product" src="/storage/IMGproduct/{{$productInCart->product->img}}" alt="/storage/IMGproduct/{{$productInCart->product->name}}"></center></span>
+               <span><center><img class="storage-product" src="/storage/IMGproduct/{{$orderProduct->product->img}}" alt="/storage/IMGproduct/{{$orderProduct->product->name}}"></center></span>
             </li>
-            <li class="col-1 offset-0 li-product">
-            <center>
-            <form action="{{ route('deleteProductFromCart', ['productId' => $productInCart->product->id]) }}" method="post">
-               @csrf           
-               <input type="hidden" name="_method" value="DELETE" >
-               <button type="submit" class="btn-carrito">Eliminar</button>            
-            </form>
-            </center>
-         </li>
+
         </ul>
 
      </div>
-     @endforeach
+        @endforeach
         <ul class="col-11 offset-1">
             <li class="col-2 offset-5 li-product" align="right">
-            <span class="h3"><strong> Total: ${{Auth::user()->cartTotal() }}</strong></span>
+            <span class="h3"><strong> Total: ${{$order->total}}</strong></span>
             
             </li>
         </ul>
-        <ul class="col-11 offset-1">
-            <li class="col-2 offset-5 li-product">
-                <div class="btn btn boton " style="border:none">
-                    <a href="/index">Agregar más cuadros</a>
-                </div>
-            </li>
-        </ul>
-        <ul class="col-11 offset-1">
-            <li class="col-2 offset-5 li-product">
-                <form action="{{route('createOrder')}}" method="post">
-                @csrf 
-                <button type="submit" class="btn btn searchButton">Comprar</button>
-                </form>
-            </li>
-        </ul>
+        @endforeach
+
      @else
     <ul class="li-product">
       <li class="col-12 offset-2 li-product">
-          <span><strong><center>No hay productos</center></strong></span>
+          <span><strong><center>No hay compras</center></strong></span>
        </li>
      </ul>
-     <ul class="col-11 offset-1">
-            <li class="col-2 offset-5 li-product">
-                <div class="btn btn boton " style="border:none">
-                    <a href="/index">Agregar cuadros al carrito</a>
-                </div>
-            </li>
-        </ul>
+
      @endif
 </div>
   <br>

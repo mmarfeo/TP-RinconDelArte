@@ -9,8 +9,8 @@
       <!-- Header -->
       <div class="user-nav-wrap">
     <div class="user-nav row">
-        <ul class="left-nav col-3 row">
-            <li class="col-2 offset-1">
+        <ul class="left-nav row col-xs-12 row col-md-12 col-lg-3">
+            <li class="col-2 offset-1 col-xs-12 row col-md-12 col-lg-3">
                 <a href="/index">
                     <i class="fas fa-home"></i>
                 </a>
@@ -21,7 +21,7 @@
                     Contactanos
                 </a>
             </li>    -->
-            <li class="col-5 offset-1">
+            <li class=" offset-1 col-xs-12 row col-md-12 col-lg-4">
                 <a href="/faq">
                     <i class="far fa-question-circle"></i>
                     Ayuda
@@ -53,7 +53,7 @@
             </li> -->
             @if( Auth::guest() )
  
-            <li class="col-1 offset-6">
+            <li class="col-4 row col-xs-12 offset-1  col-md-12 col-lg-1 offset-6">
                 <a href="/login">Iniciar sesión</a>
             </li>
             
@@ -104,13 +104,15 @@
                                 
                 <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></strong>
 
+                <strong><a class="dropdown-item" href="{{ route('logout') }}">Mis órdenes</a></strong>
+
                 <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a></strong>
                                 
                 <strong><a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                         {{ __('Cerrar sesion') }}
-                    </a></strong>
+                        </a></strong>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
@@ -160,7 +162,8 @@
       @yield ("registro")
       @yield ("faq")
       @yield ("Cuadros")
-      @yield ("carrito")
+      @yield ("ordenes")
+      
  
 <!-- Footer -->
 <footer class="row">

@@ -522,3 +522,11 @@ object-fit: cover;
     background: #994C4F;
     text-align: center;
 }
+
+.nav-login{
+    margin-left: 713px;
+}
+
+.nav-desplegable{
+    color:black;
+}
