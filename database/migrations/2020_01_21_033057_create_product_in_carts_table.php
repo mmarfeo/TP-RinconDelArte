@@ -21,8 +21,8 @@ class CreateProductInCartsTable extends Migration
             $table->timestamps();
 
             $table->primary(['user_id', 'product_id']);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade")->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete("cascade")->onUpdate('cascade');
         });
     }
 

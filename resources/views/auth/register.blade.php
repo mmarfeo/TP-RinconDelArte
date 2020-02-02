@@ -82,6 +82,17 @@
                             </div>
                         </div> -->
 
+<!--Fecha de nacimiento - Se copio de name y se modificaron algunos campos-->
+                        <div class="form-group row">
+                            <label for="fechaNac" class="col-md-4 col-form-label text-md-right">Provincia</label>
+                            <div class="col-md-6">
+                            <select name="provincia" id="provincias">
+                                Provincia de Origen
+                                </select>
+                            </div>
+                        </div>
+
+
 <!--Genero - Se copio de name y se modificaron algunos campos-->
                          <!-- <div class="form-group row">
                             <label for="genero" class="col-md-4 col-form-label text-md-right">{{ __('Género') }}</label>
@@ -147,4 +158,54 @@
         </div>
     </div>
 </div>
+<script>
+document.getElementById('email').addEventListener('input', function() {
+    campo = event.target;
+    valido = document.getElementById('emailOK');
+        
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    
+    if (emailRegex.test(campo.value)) {
+      valido.innerText = "válido";
+    } else {
+      valido.innerText = "El formato no es válido";
+    }
+});
+
+function validarNombre(){
+            console.log("valido");
+            var nombre = document.querySelector("input#name");
+            if(nombre.value == ""){
+                var spanNombre = document.querySelector("span#errorName");
+                spanNombre.innerHTML = "El nombre es obligatorio.";
+            }else{
+                var spanNombre = document.querySelector("span#errorNombre");
+                spanNombre.innerHTML = "";
+            }
+        }
+        var enviar = document.querySelector("button");
+        enviar.addEventListener("click",function(){
+            validarNombre();
+        });
+
+// API
+
+        fetch("https://apis.datos.gob.ar/georef/api/provincias")
+.then(function(respuesta){
+    return respuesta.json();
+})
+.then(function(datosJSON){
+    var select = document.querySelector("select#provincias");
+    console.log(select.innerHTML);
+    for(var i = 0; i < datosJSON.provincias.length; i++){
+        //console.log(datosJSON.provincias[i].nombre);
+        select.innerHTML = 
+        select.innerHTML + "<option value='"+datosJSON.provincias[i].nombre+"'>"+datosJSON.provincias[i].nombre+"</option>";
+    }
+    console.log(select.innerHTML);
+})
+.catch(function(error){
+    console.log(error);
+});
+</script>
 @endsection

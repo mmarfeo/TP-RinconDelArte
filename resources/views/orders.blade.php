@@ -106,6 +106,8 @@
                           
           <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></strong>
 
+          <strong><a class="dropdown-item" href="/carrito">Mi carrito</a></strong>
+
           <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a></strong>
                           
           <strong><a class="dropdown-item" href="{{ route('logout') }}"
@@ -162,7 +164,7 @@
       
         <section class="col-12">
         <br>
-          <center><h3>Mis órdenes</h3></center>  
+          <center><h3>Mis compras</h3></center>  
           <br><br>
         </section>
        
@@ -174,7 +176,7 @@
   <div class="container-fluid">
   @foreach(Auth::user()->orders as $order)
       <div class="row ">
-        <ul class="col-11 offset-1">
+        <ul class="col-10 offset-2">
             <li class="col-1" style="border: 1px solid black; background: white">
                <span><strong><center>Cantidad</center></strong></span>
             </li>
@@ -202,7 +204,7 @@
      @foreach($order->ordersProduct as $orderProduct)
 
     <div class="row" style="height:8%; margin-bottom: 1%">
-        <ul class="col-11 offset-1">
+        <ul class="col-10 offset-2">
             <li class="col-1 li-product" >
                <span><strong><center>{{ $orderProduct->count }}</center></strong></span>
             </li>
@@ -225,7 +227,7 @@
      </div>
         @endforeach
         <ul class="col-11 offset-1">
-            <li class="col-2 offset-5 li-product" align="right">
+            <li class="col-2 offset-6 li-product" align="center">
             <span class="h3"><strong> Total: ${{$order->total}}</strong></span>
             
             </li>

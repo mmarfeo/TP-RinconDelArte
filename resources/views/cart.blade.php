@@ -109,6 +109,8 @@
                           
           <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></strong>
 
+          <strong><a class="dropdown-item" href="{{ route('orders') }}">Mis compras</a></strong>
+
           <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a></strong>
                           
           <strong><a class="dropdown-item" href="{{ route('logout') }}"

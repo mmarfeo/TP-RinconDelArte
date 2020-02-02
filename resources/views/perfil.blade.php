@@ -92,16 +92,18 @@
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-          <a class="dropdown-item" href="/index">Ir al inicio</a>
-                          
-          <!-- <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a> -->
-                          
-              <a class="dropdown-item" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                  {{ __('Cerrar sesion') }}
-              </a>
+                         
+             <strong><a class="dropdown-item" href="/index">Ir al inicio</a></strong>
+                                               
+             <strong><a class="dropdown-item" href="{{ route('orders') }}">Mis compras</a></strong>
+                
+             <strong><a class="dropdown-item" href="/carrito">Mi carrito</a></strong>
+                
+             <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a></strong>
+                                                
+             <strong><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                {{ __('Cerrar sesion') }} </a></strong>
 
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                           @csrf

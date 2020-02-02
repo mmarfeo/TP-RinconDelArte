@@ -47,15 +47,16 @@
                 <label for="cuadro" class="w-100">Cuadro</label>
                 <input class="w-100" type="file" name="img" id="cuadro">
                 <span style="color:red;font-size:20px;">{{$errors->first('img')}}</span>
+                <br>
            </div>
-            <br>
             <br>
 
 
            <div class="col-4 offset-4 boton">
                 <!-- <a href="{{--route('adminProducts')--}}" class="link-boton">Cargar producto</a> -->
                 <button type="submit"  name="button">Cargar producto</button>
-                
+                <br>
+                <br>
                 <form action="/adminProducts">
                 <button type="submit" name="button">Listado de productos</button>
                 </form>

@@ -119,6 +119,7 @@ p, label, a, input {
 
 .user-nav-wrap {
     background: #7F3F41;
+;
 }
 
 .user-nav-wrap a, .user-nav-wrap span {
@@ -224,8 +225,20 @@ footer .fab {
 
 a:hover {
     text-decoration: none;
-
 }
+
+/* div a {
+    text-decoration: none;
+} */
+
+
+div a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+
 
 .secondary-header-wrap a:hover{
     color: #000000;
@@ -234,7 +247,20 @@ a:hover {
 
 .user-nav a:hover, footer a:hover{
     color: #FFFFFF;
+    display: flex;
+    justify-content: space-between
 }
+
+.nav-rigth{
+    margin-right: 0px;
+    margin-left: 100px;;
+    max-width: 100%;
+}
+
+.nav-rigth ul{
+    margin-left:55px
+}
+
 
 .basket-wrap {
     /* background: #7F3F41; */
@@ -530,3 +556,26 @@ object-fit: cover;
 .nav-desplegable{
     color:black;
 }
+.derecha-responsive{
+    justify-content: right;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {   
+    .desaparece {
+      display: none;
+    }
+
+    .user-nav {
+        display: flex;
+        flex-direction: column;
+        background-color: yellow;
+        
+    }
+
+    .nav-rigth ul{
+        margin-left:0px
+    }
+
+
+  }

@@ -7,10 +7,14 @@
     <div class="container-fluid">
 
       <!-- Header -->
-      <div class="user-nav-wrap">
-    <div class="user-nav row">
-        <ul class="left-nav row col-xs-12 row col-md-12 col-lg-3">
-            <li class="col-2 offset-1 col-xs-12 row col-md-12 col-lg-3">
+     <div class="user-nav-wrap">
+     <!-- user-nav -->
+      <div class="row justify-content-between ">
+        <div class="col-xs-12 col-md-12 col-lg-4">
+        <!-- row col-xs-12 row col-md-12 col-lg-3 centrar-resposive -->
+        <ul class="left-nav user-nav">
+        <!-- offset-1 col-xs-12 row col-md-12 col-lg-3 centrar-resposive -->
+            <li class="col-1 ">
                 <a href="/index">
                     <i class="fas fa-home"></i>
                 </a>
@@ -21,13 +25,15 @@
                     Contactanos
                 </a>
             </li>    -->
-            <li class=" offset-1 col-xs-12 row col-md-12 col-lg-4">
+            <!-- offset-1 col-xs-12 row col-md-12 col-lg-4 centrar-resposive -->
+            <li class="col-3">
                 <a href="/faq">
                     <i class="far fa-question-circle"></i>
                     Ayuda
                 </a>
             </li>
         </ul>
+        </div>
   <!--      <div class="middle-nav col-2 row">
             <div class="col-12 envio-gratis">
                 <a href="#">
@@ -52,22 +58,31 @@
                 </a>
             </li> -->
             @if( Auth::guest() )
- 
-            <li class="col-4 row col-xs-12 offset-1  col-md-12 col-lg-1 offset-6">
+        <!-- <ul class="user-nav nav-rigth centrar-resposive"> -->
+        <!-- col-4 row col-xs-12 offset-1  col-md-12 col-lg-1 offset-6  -->
+        <div class="col-xs-12 col-md-12 col-lg-7 nav-rigth">
+        <!-- col-xs-12  col-md-1-offset-6 col-lg-1-offset-6 -->
+        <ul class="col-12 user-nav">
+        <!-- col-xs-12  col-md-1-offset-6 col-lg-1-offset-6    -->
+            <li class="col-2">
                 <a href="/login">Iniciar sesión</a>
             </li>
-            
-            <li class="col-1">
+            <!-- col-1 centrar-resposive -->
+            <li class="col-2">
                 <a href="/register">Crear cuenta</a>
             </li>
             
-                @guest
-                    <li class="col-1">
-                        <a href="{{ route('login') }}">Carrito</a>
-                        <a href="{{ route('login') }}" class="col-6">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
+            @guest
+            <!-- col-1 centrar-resposive -->
+            <li class="col-2">
+                <a href="{{ route('login') }}">Carrito</a>
+                <a href="{{ route('login') }}" class="col-6">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+        <!-- </ul> -->
                 @else
                 @endguest
                     <!-- <li class="col-1">
@@ -83,17 +98,17 @@
 
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('') }}</a>
+                <a class="nav-link centrar-resposive" href="{{ route('login') }}">{{ __('') }}</a>
             </li>
             @if (Route::has('register'))
-                <li class="nav-item">
+                <li class="nav-item centrar-resposive">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
                 </li>
             @endif
             @else
 
                 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown centrar-resposive">
                 <img class="mini-avatar" src="/storage/{{Auth::user()->avatar}}" align="left"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 <!-- hola xxxx -->Hola {{ Auth::user()->name }} <span class="caret"></span> 
                 </a>
@@ -104,7 +119,9 @@
                                 
                 <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></strong>
 
-                <strong><a class="dropdown-item" href="{{ route('logout') }}">Mis órdenes</a></strong>
+                <strong><a class="dropdown-item" href="{{ route('orders') }}">Mis compras</a></strong>
+
+                <strong><a class="dropdown-item" href="/carrito">Mi carrito</a></strong>
 
                 <strong><a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Borrar Cuenta</a></strong>
                                 
@@ -119,7 +136,7 @@
                              </form>
                         </div>
                     </li>
-                    <li class="col-1">
+                    <li class="col-1 centrar-resposive">
                         <a href="/carrito">Carrito</a>
                         <a href="/carrito" class="col-6">
                             <i class="fas fa-shopping-cart"></i>

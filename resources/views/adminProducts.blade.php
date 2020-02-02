@@ -83,18 +83,22 @@
  
     @empty
     <ul class="li-product">
-      <li class="col-1 li-product">
+      <li class="col-12 offset-0 li-product">
           <span><strong><center>No hay productos</center></strong></span>
        </li>
      </ul>
     @endforelse
+
 </div>
   <br>
  <br>
  <br>
  <br>
   </section>
-
+  <div class="row">
+            <strong><center><a class="btn btn boton col-12 offset-4" href="/admin">Cargar más productos</a></center></strong>
+            <strong><center><a class="btn btn boton col-12 offset-2" href="/index">Ir al inicio</a></center></strong>
+   </div>
 </body>
 
 <footer class="row">

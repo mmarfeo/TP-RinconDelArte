@@ -8,7 +8,7 @@
   <main class="row">
 
     <!-- Barra lateral -->
-    <section class="col-2 sidebar">
+    <section class="col-2 sidebar desaparece">
       <img class="arte" src="img/arte-6.jpeg" alt=""/>
     </section>
     <div class="main-content col-10 row">
