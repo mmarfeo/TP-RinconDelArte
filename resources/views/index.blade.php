@@ -11,11 +11,11 @@
     <section class="col-2 sidebar desaparece">
       <img class="arte" src="img/arte-6.jpeg" alt=""/>
     </section>
-    <div class="main-content col-10 row">
+    <div class="main-content col-xs-12 col-md-12 col-lg-10 row">
 
       <!-- Carousel -->
       <div class="carousel-container col-12 row">
-        <section id="demo" class="carousel slide col-12" data-ride="carousel">
+        <section id="demo" class="carousel slide col-12 desaparece" data-ride="carousel">
 
           <!-- Indicadores del carousel -->
           <ul class="carousel-indicators">
@@ -64,7 +64,8 @@
         <div class="products-container col-12 row">
 
           @forelse ($products as $product)
-            <article class="col-4">
+          <!-- col-4 -->
+            <article class="col-xs-12 col-md-6 col-lg-4">
               <img class="index-product" src="/storage/IMGproduct/{{$product->img}}" alt="">
               <p class="col-12">Nombre: {{$product->name}}</p>
               <p class="col-12">Descripción: {{$product->description}}</p>

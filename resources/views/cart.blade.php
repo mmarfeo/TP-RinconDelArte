@@ -237,27 +237,29 @@
 
      </div>
      @endforeach
+     <div>
         <ul class="col-11 offset-1">
             <li class="col-2 offset-5 li-product" align="right">
             <span class="h3"><strong> Total: ${{Auth::user()->cartTotal() }}</strong></span>
             
             </li>
         </ul>
-        <ul class="col-11 offset-1">
-            <li class="col-2 offset-5 li-product">
+    </div>
+    <div class="col-12">
+        <ul class="col-8 offset-2">
+            <li class="col-2 offset-4 li-product">
                 <div class="btn btn boton " style="border:none">
                     <a href="/index">Agregar más cuadros</a>
                 </div>
             </li>
-        </ul>
-        <ul class="col-11 offset-1">
-            <li class="col-2 offset-5 li-product">
+            <li class="col-3 offset-2 li-product">
                 <form action="{{route('createOrder')}}" method="post">
                 @csrf 
                 <button type="submit" class="btn btn searchButton">Comprar</button>
                 </form>
             </li>
         </ul>
+    </div>
      @else
     <ul class="li-product">
       <li class="col-12 offset-2 li-product">

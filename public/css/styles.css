@@ -253,7 +253,7 @@ div a:hover {
 
 .nav-rigth{
     margin-right: 0px;
-    margin-left: 100px;;
+    margin-left: 0px;;
     max-width: 100%;
 }
 
@@ -507,8 +507,10 @@ ul.right-nav{
 
 .li-product{
     /* margin: 0%; */
-    padding: 0%;
-    margin-bottom: 10%;
+    /* padding: 0%;
+    margin-bottom: 10%; */
+    margin: auto;
+    
   
 }
 
@@ -560,6 +562,19 @@ object-fit: cover;
     justify-content: right;
 }
 
+.navbar{
+    border:2px solid #994C4F;
+    color: #FFF6E8;
+    border-radius: 5px;
+    padding:3% 6%;
+    text-decoration: none;
+    margin-bottom:60px;
+    background: #994C4F;
+    text-align: center;
+    display: block;
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 600px) {   
     .desaparece {
@@ -569,13 +584,33 @@ object-fit: cover;
     .user-nav {
         display: flex;
         flex-direction: column;
-        background-color: yellow;
-        
+        background-color: #994C4F;
+    }
+    .user-nav li{
+        border-right: 0px;
+        text-align: center;
     }
 
+    /* .menu-desapa{
+        margin-top: -70;
+    } */
     .nav-rigth ul{
         margin-left:0px
     }
 
+    .logo {
+        width: 800%;  
+    }
+
+    .redes-responsive{
+        margin-left: 110px;
+    }
+    .nav-boton{
+        display: block;
+        background: #994C4F;
+        border: 20px solid white;
+        border-radius: 0px;
+        margin-bottom: 0px;
+     }
 
   }

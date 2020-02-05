@@ -4,17 +4,17 @@
   <body >
 
     <!-- Contenedor de Bootstrap -->
-    <div class="container-fluid">
+    <div class="container-fluid container-responsive ">
 
       <!-- Header -->
-     <div class="user-nav-wrap">
+     <div class="user-nav-wrap " id="nav-java">
      <!-- user-nav -->
       <div class="row justify-content-between ">
-        <div class="col-xs-12 col-md-12 col-lg-4">
+         <div class="col-xs-12 col-md-12 col-lg-4 ">
         <!-- row col-xs-12 row col-md-12 col-lg-3 centrar-resposive -->
         <ul class="left-nav user-nav">
         <!-- offset-1 col-xs-12 row col-md-12 col-lg-3 centrar-resposive -->
-            <li class="col-1 ">
+            <li class="col-xs-12 col-md-6 col-lg-1 text-center">
                 <a href="/index">
                     <i class="fas fa-home"></i>
                 </a>
@@ -26,7 +26,7 @@
                 </a>
             </li>    -->
             <!-- offset-1 col-xs-12 row col-md-12 col-lg-4 centrar-resposive -->
-            <li class="col-3">
+            <li class="col-xs-12 col-md-6 col-lg-3 text-center menu-desapa">
                 <a href="/faq">
                     <i class="far fa-question-circle"></i>
                     Ayuda
@@ -59,22 +59,22 @@
             </li> -->
             @if( Auth::guest() )
         <!-- <ul class="user-nav nav-rigth centrar-resposive"> -->
-        <!-- col-4 row col-xs-12 offset-1  col-md-12 col-lg-1 offset-6  -->
-        <div class="col-xs-12 col-md-12 col-lg-7 nav-rigth">
+        <!-- col-4 row col-xs-12 offset-1  col-md-12 col-lg-1 offset-6 desaparece -->
+        <div class="col-xs-12 col-md-12 col-lg-7 nav-rigth ">
         <!-- col-xs-12  col-md-1-offset-6 col-lg-1-offset-6 -->
-        <ul class="col-12 user-nav">
+        <ul class="col-12 user-nav ">
         <!-- col-xs-12  col-md-1-offset-6 col-lg-1-offset-6    -->
-            <li class="col-2">
+            <li class="col-xs-12 col-md-12 col-lg-2 offset-lg-5 text-center menu-desapa">
                 <a href="/login">Iniciar sesión</a>
             </li>
             <!-- col-1 centrar-resposive -->
-            <li class="col-2">
+            <li class="col-xs-12 col-md-12 col-lg-2 text-center menu-desapa">
                 <a href="/register">Crear cuenta</a>
             </li>
             
             @guest
             <!-- col-1 centrar-resposive -->
-            <li class="col-2">
+            <li class="col-xs-12 col-md-12 col-lg-2 text-center">
                 <a href="{{ route('login') }}">Carrito</a>
                 <a href="{{ route('login') }}" class="col-6">
                     <i class="fas fa-shopping-cart"></i>
@@ -108,7 +108,7 @@
             @else
 
                 
-            <li class="nav-item dropdown centrar-resposive">
+            <li class="nav-item dropdown text-center">
                 <img class="mini-avatar" src="/storage/{{Auth::user()->avatar}}" align="left"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 <!-- hola xxxx -->Hola {{ Auth::user()->name }} <span class="caret"></span> 
                 </a>
@@ -136,7 +136,7 @@
                              </form>
                         </div>
                     </li>
-                    <li class="col-1 centrar-resposive">
+                    <li class="col-xs-12 col-md-12 col-lg-1 text-center">
                         <a href="/carrito">Carrito</a>
                         <a href="/carrito" class="col-6">
                             <i class="fas fa-shopping-cart"></i>
@@ -157,24 +157,17 @@
     </div>
 </div>
 
-
-          <div class="header-wrap">
-	<header>
-		<div class="primary-wrap row">
-
-			<div class="brand-wrap col-2 offset-5">
-                <h1>
-                    <a href="/index">
-						<img src="/img/logo.png" alt="Galería de Arte" class="logo">
-						<!-- Galería de Arte -->
+<header>
+ <!-- col-xs-1 col-md-1 col-lg-2 offset-lg-5      col order-xl-5 col-xl-2-->
+        	<div class="brand-wrap col-2 col-md-12 col-lg-2 offset-4 offset-lg-5">
+                        <a href="/index">
+                        <!-- img-fluid  -->
+						<img src="/img/logo.png" alt="Galería de Arte" class="logo">  
                     </a>
-				         </h1>
 			</div>
-	</header>
-</div>
-
-
-      @yield ("principal")
+            	    
+</header>
+@yield ("principal")
       @yield ("app")
       @yield ("registro")
       @yield ("faq")
@@ -185,9 +178,9 @@
 <!-- Footer -->
 <footer class="row">
 
-    <div class="col-2 offset-5 redes-sociales">
+    <div class="col-xs-12 col-md-6 col-lg-2 offset-lg-5 redes-sociales">
         <ul>
-        <li><a href="https://facebook.com/" target="_blank" class="fab fa-facebook"></a></li>
+        <li><a href="https://facebook.com/" target="_blank" class="fab fa-facebook redes-responsive"></a></li>
         <li><a href="https://instagram.com/" target="_blank" class="fab fa-instagram"></a></li>
         <li><a href="https://twitter.com/" target="_blank" class="fab fa-twitter"></a></li>
         <li><a href="https://pinterest.com/" target="_blank" class="fab fa-pinterest"></a></li>
@@ -195,6 +188,15 @@
     </div>
     </footer>
     </div>
+
+    <script>
+    function accion(){
+        document.getElementById("nav-java").style.display="none";
+    //     for (var i = 0; i < ancla.length; i++){
+    //         ancla[i].IdList.toogle("desaparece");
+    //  var ancla =  }
+    }
+    </script>
   </body>
 
 </html>
